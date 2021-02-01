@@ -14,8 +14,12 @@ class GEOKO {
             BrGr(nBrGr), LaGr(nLaGr), BrMin(nBrMin), LaMin(nLaMin), BrSec(nBrSec), LaSec(nLaSec){};
         ~GEOKO();
 
-        bool operator >(GEOKO &);
-        bool operator ==(GEOKO &);
+        bool operator>(GEOKO& geoRigth);
+        bool operator<(GEOKO& geoRigth);
+        bool operator>=(GEOKO& geoRigth);
+        bool operator<=(GEOKO& geoRigth);
+        bool operator==(GEOKO& geoRigth);
+        bool operator!=(GEOKO& geoRigth);
 
         void setAbstand(GEOKO *);
         double getDistance(GEOKO *);

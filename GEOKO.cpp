@@ -1,30 +1,8 @@
 #include "GEOKO.h"
 #include <math.h>
 
-// Vergleich nach Breitengrad -> Längengrad
-bool GEOKO::operator >(GEOKO &nObj){
-    if(this->getBrGr() > nObj.getBrGr()){return true;}
-    else if(this->getLaGr() > nObj.getLaGr()){return true;}
-    else if(this->getBrMin() > nObj.getBrMin()){return true;}
-    else if(this->getLaMin() > nObj.getLaMin()){return true;}
-    else if(this->getBrSec() > nObj.getBrMin()){return true;}
-    else if(this->getLaSec() > nObj.getLaSec()){return true;}
-    else return false;
-}
+#define EPSILON 0.01
 
-bool GEOKO::operator ==(GEOKO &nObj){
-    if(
-        this->BrGr == nObj.getBrGr() &&
-        this->BrMin == nObj.getBrMin() &&
-        this->BrSec == nObj.getBrSec() &&
-        this->LaGr == nObj.getLaGr() &&
-        this->LaMin == nObj.getLaMin() &&
-        this->LaSec == nObj.getLaSec()
-    ){
-        return true;
-    }
-    else return false;
-}
 
 void GEOKO::setAbstand(GEOKO *ngeo){
     abstand = getDistance(ngeo);
@@ -91,3 +69,26 @@ void GEOKO::setLaSec(double nLaSec){
 }
 
 
+bool GEOKO::operator>(GEOKO& nObj){
+    return this->getAbstand() > nObj.getAbstand();
+}
+
+bool GEOKO::operator<(GEOKO& nObj){
+    return this->getAbstand() < nObj.getAbstand();
+}
+
+bool GEOKO::operator>=(GEOKO& nObj){
+    return this->getAbstand() >= nObj.getAbstand();
+}
+
+bool GEOKO::operator<=(GEOKO& nObj){
+    return this->getAbstand() <= nObj.getAbstand();
+}
+
+bool GEOKO::operator==(GEOKO& nObj){
+    return fabs(this->getAbstand() - nObj.getAbstand()) <= EPSILON;
+}
+
+bool GEOKO::operator!=(GEOKO& nObj){
+    return fabs(this->getAbstand() - nObj.getAbstand()) > EPSILON;
+}
