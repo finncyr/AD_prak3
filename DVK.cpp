@@ -20,8 +20,14 @@ bool DVK::anhaenge(GEOKO *neu){
         Element->setV(Index[Anz - 1]);
     }
 
+    if(this->getData() != nullptr){
+        ((GEOKO *)Index[Anz]->getData())->setAbstand((GEOKO *)this->getData());
+    }
+
     Anz++;
 }
+
+// ----------------- HEAP SORT -----------------
 
 void DVK::heapSort(){
     erzeugeHeap(Anz);
@@ -72,4 +78,8 @@ void DVK::vertausche(long First, long Second){
     Index[Second + 1]->setV(Index[Second]);
 }
 
-void insertionSort();
+// ----------------- INSERTION SORT -----------------
+
+void DVK::insertionSort(){
+    
+}
