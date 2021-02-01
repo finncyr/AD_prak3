@@ -81,5 +81,12 @@ void DVK::vertausche(long First, long Second){
 // ----------------- INSERTION SORT -----------------
 
 void DVK::insertionSort(){
-    
+    int j = 0;
+    for(int i = 1; i < Anz; i++){
+        j = i;
+        while (j > 0 && *((GEOKO *)Index[j-1]->getData()) > *((GEOKO *)Index[j]->getData())){
+            vertausche(j, j-1);
+            j -= 1;
+        }
+    }
 }
