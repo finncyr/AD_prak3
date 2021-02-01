@@ -32,9 +32,11 @@ void DVK::heapSort(){
     }
 }
 
+
+//TODO Checken ob funktioniert sonst Arrayindex immer "index" - 1
 void DVK::heapDown(long groesse, long index){
     for (long i = 2 * index; i < groesse; i = 2 * i) {
-        if (((i + 1) < groesse) && (*(Index[i + 1]) > *(Index[i])))
+        if (((i + 1) < groesse) && (*((GEOKO *)Index[i + 1]->getData()) > *((GEOKO *)Index[i]->getData())))
             i++;
         if (*((GEOKO *) Index[i / 2]->getData()) >= *((GEOKO *)Index[i]->getData()))
             break;
@@ -43,7 +45,13 @@ void DVK::heapDown(long groesse, long index){
     }
 }
 
-void erzeugeHeap(long Anzahl);
+void DVK::erzeugeHeap(long Anzahl){
+    for (long i = Anzahl / 2; i >= 0; i--) {
+        heapDown(Anzahl, i);
+    }
+}
+
+
 void DVK::vertausche(long First, long Second){
     DVKE *tmp = Index[First];
     Index[First] = Index[Second];
