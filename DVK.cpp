@@ -11,8 +11,16 @@ DVK::~DVK(){
 
 
 
-bool DVK::anhaenge(GEOKO *){
+bool DVK::anhaenge(GEOKO *neu){
+    DVKE *Element = new DVKE(nullptr,nullptr,(void*)neu);
+    Index[Anz] = Element;
 
+    if(Anz != 0){
+        Index[Anz - 1]->setN(Element);
+        Element->setV(Index[Anz - 1]);
+    }
+
+    Anz++;
 }
 
 void heapSort();
