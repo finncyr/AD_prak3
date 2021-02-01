@@ -1,5 +1,6 @@
 #include "DVKE.h"
 #include "GEOKO.h"
+#include <iostream>
 
 class DVK : private DVKE{
     private:
@@ -22,5 +23,6 @@ class DVK : private DVKE{
         void insertionSort();
 
         void CalcAllDistances();
-        void DVK::CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt);
+        void CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt);
+        void PrintMiddle();
 };

@@ -102,6 +102,9 @@ int main(){
             f.close();
             std::cout << in << " Zeilen eingelesen!" << std::endl;
 
+            Liste->CalcMiddle(brSecDurchschnitt, laSecDurchschnitt);
+            Liste->CalcAllDistances();
+
             textSeperator();
             break;
 

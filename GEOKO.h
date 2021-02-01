@@ -1,3 +1,8 @@
+#include <iostream>
+#include <math.h>
+#include <ostream>
+#include <iomanip>
+
 class GEOKO {
     private:
         int BrGr;
@@ -20,6 +25,8 @@ class GEOKO {
         bool operator<=(GEOKO& geoRigth);
         bool operator==(GEOKO& geoRigth);
         bool operator!=(GEOKO& geoRigth);
+
+        friend std::ostream& operator<<(std::ostream&, GEOKO&);
 
         void setAbstand(GEOKO *);
         double getDistance(GEOKO *);

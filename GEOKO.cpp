@@ -1,7 +1,7 @@
 #include "GEOKO.h"
-#include <math.h>
 
 #define EPSILON 0.01
+#define SEMIKOL ";"
 
 
 void GEOKO::setAbstand(GEOKO *ngeo){
@@ -93,3 +93,12 @@ bool GEOKO::operator!=(GEOKO& nObj){
     return fabs(this->getAbstand() - nObj.getAbstand()) > EPSILON;
 }
 
+
+// Thanks StackOverflow ^^
+std::ostream& operator<<(std::ostream& ostream, GEOKO& geo) {
+    ostream << std::fixed << std::setprecision(2) 
+            << std::right << std::setw(12) << std::setfill(' ') << geo.getAbstand() << SEMIKOL 
+            << std::right << std::setw(12) << std::setfill(' ') << geo.getBrSec() << SEMIKOL 
+            << std::right << std::setw(12) << std::setfill(' ') << geo.getLaSec() << SEMIKOL;
+    return ostream;
+}
