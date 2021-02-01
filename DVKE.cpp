@@ -9,7 +9,7 @@ DVKE *DVKE::getN() {
     return this->N;
 }
 
-DVKE *DVKE::getData() {
+void *DVKE::getData() {
     return this->Data;
 }
 

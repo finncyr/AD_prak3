@@ -9,7 +9,7 @@ class DVKE {
 
         DVKE *getV();
         DVKE *getN();
-        DVKE *getData();
+        void *getData();
 
         void setV(DVKE *);
         void setN(DVKE *);
