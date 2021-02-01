@@ -29,6 +29,8 @@ bool DVK::anhaenge(GEOKO *neu){
     }
 
     Anz++;
+
+    return true;
 }
 
 // ----------------- HEAP SORT -----------------
@@ -43,20 +45,22 @@ void DVK::heapSort(){
 }
 
 
-//TODO Checken ob funktioniert sonst Arrayindex immer "index" - 1
-void DVK::heapDown(long groesse, long index){
-    for (long i = 2 * index; i < groesse; i = 2 * i) {
-        if (((i + 1) < groesse) && (*((GEOKO *)Index[i + 1]->getData()) > *((GEOKO *)Index[i]->getData())))
-            i++;
-        if (*((GEOKO *) Index[i / 2]->getData()) >= *((GEOKO *)Index[i]->getData()))
-            break;
 
-        vertausche(i / 2, i);
+void DVK::heapDown(long groesse, long index){
+    while(index <= groesse/2){
+        int LN = index*2;
+        if(LN < groesse) if (*((GEOKO *)Index[LN]->getData()) > *((GEOKO *)Index[LN-1]->getData())) LN++;
+        if(*((GEOKO *)Index[LN-1]->getData()) > *((GEOKO *)Index[index - 1]->getData())){
+            vertausche(index-1,LN-1);
+            index = LN;
+        }
+        else index = groesse;
     }
 }
 
+
 void DVK::erzeugeHeap(long Anzahl){
-    for (long i = Anzahl / 2; i >= 0; i--) {
+    for (long i = Anzahl / 2; i >= 1; i--) {
         heapDown(Anzahl, i);
     }
 }
@@ -75,11 +79,18 @@ void DVK::vertausche(long First, long Second){
     Index[Second]->setN(Index[First]->getN());
     Index[First]->setN(tmp);
 
-    Index[First - 1]->setN(Index[First]);
-    Index[First + 1]->setV(Index[First]);
-
-    Index[Second - 1]->setN(Index[Second]);
-    Index[Second + 1]->setV(Index[Second]);
+    if(Index[First]->getV() != nullptr){
+        Index[First - 1]->setN(Index[First]);
+    }
+    if(Index[First]->getN() != nullptr){
+        Index[First + 1]->setV(Index[First]);
+    }
+    if(Index[Second]->getV() != nullptr){
+        Index[Second - 1]->setN(Index[Second]);
+    }
+    if(Index[Second]->getN() != nullptr){
+        Index[Second + 1]->setV(Index[Second]);
+    }
 }
 
 // ----------------- INSERTION SORT -----------------
@@ -122,10 +133,10 @@ void DVK::CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt) {
     );
 }
 
-void DVK::PrintMiddle(){
-    std::cout << (GEOKO *)this->getData() << std::endl;
+void DVK::PrintMiddle(std::ostream& out){
+    out << *((GEOKO *)this->getData()) << std::endl;
 }
 
-void DVK::PrintIndex(int i){
-    std::cout << (GEOKO *)Index[i]->getData() << std::endl;
+void DVK::PrintIndex(int i, std::ostream& out){
+    out << *((GEOKO *)Index[i]->getData()) << std::endl;
 }

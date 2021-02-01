@@ -1,5 +1,8 @@
 #include "DVKE.h"
 
+DVKE::~DVKE(){
+
+}
 
 DVKE *DVKE::getV() {
     return this->V;

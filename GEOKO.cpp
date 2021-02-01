@@ -95,10 +95,11 @@ bool GEOKO::operator!=(GEOKO& nObj){
 
 
 // Thanks StackOverflow ^^
-std::ostream& operator<<(std::ostream& ostream, GEOKO& geo) {
-    ostream << std::fixed << std::setprecision(2) 
-            << std::right << std::setw(12) << std::setfill(' ') << geo.getAbstand() << SEMIKOL 
-            << std::right << std::setw(12) << std::setfill(' ') << geo.getBrSec() << SEMIKOL 
+std::ostream& operator<<(std::ostream& out, GEOKO& geo) {
+    out << std::fixed << std::setprecision(2)
+            << std::right << std::setw(12) << std::setfill(' ') << geo.getAbstand() << SEMIKOL
+            << std::right << std::setw(12) << std::setfill(' ') << geo.getBrSec() << SEMIKOL
             << std::right << std::setw(12) << std::setfill(' ') << geo.getLaSec() << SEMIKOL;
-    return ostream;
+    return out;
 }
+

@@ -9,7 +9,7 @@ class DVK : private DVKE{
         DVKE** Index;
 
     public:
-        DVK(int Anzahl) : Max(Anzahl), Anz(0){};
+        DVK(int Anzahl);
         ~DVK();
 
         int getAnz();
@@ -24,6 +24,6 @@ class DVK : private DVKE{
 
         void CalcAllDistances();
         void CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt);
-        void PrintMiddle();
-        void PrintIndex(int);
+        void PrintMiddle(std::ostream&);
+        void PrintIndex(int, std::ostream&);
 };
