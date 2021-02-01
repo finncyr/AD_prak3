@@ -4,7 +4,9 @@
 #include <fstream>
 #include <chrono>
 
+
 #define SEMIKOL ";"
+#define LINE_CHAR_MAX 2500
 
 void textSeperator(){
     std::cout << std::endl;
@@ -37,6 +39,9 @@ int main(){
     double laSecDurchschnitt = 0;
     long left2read; // max to read
     char line[LINE_CHAR_MAX];
+
+    std::chrono::steady_clock::time_point start, stop;
+    std::chrono::duration<double> elapsed_seconds;
 
 
     while(menuchoice != 5){
@@ -107,48 +112,51 @@ int main(){
             Liste->CalcAllDistances();
 
             std::cout << "Mittelpunkt: " << std::endl;
-            Liste->PrintMiddle();
+            Liste->PrintMiddle(std::cout);
 
             textSeperator();
             break;
 
         case 2:
-            auto start = std::chrono::steady_clock::now();
+            start = std::chrono::steady_clock::now();
             Liste->heapSort();
-            auto stop = std::chrono::steady_clock::now();
-            std::chrono::duration<double> elapsed_seconds = stop-start;
-            std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
+            stop = std::chrono::steady_clock::now();
+            elapsed_seconds = (stop-start);
+            std::cout << "elapsed time: " << elapsed_seconds.count() << " s." << std::endl;
             textSeperator();
             break;
 
         case 3:
-            auto start = std::chrono::steady_clock::now();
+            start = std::chrono::steady_clock::now();
             Liste->insertionSort();
-            auto stop = std::chrono::steady_clock::now();
-            std::chrono::duration<double> elapsed_seconds = stop-start;
-            std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
+            stop = std::chrono::steady_clock::now();
+            elapsed_seconds = (stop-start);
+            std::cout << "elapsed time: " << elapsed_seconds.count() << " s." << std::endl;
             textSeperator();
             break;
 
         case 4:
-            strcat(importchar, "_S");
+            importchar = strtok(importchar, ".");
+            strcat(importchar, "_S.csv");
             f.open(importchar, std::ios::out);
 
             f << "Anz Daten: " << Liste->getAnz() << "; Mittelpunkt: ";
-            Liste->PrintMiddle();
+            Liste->PrintMiddle(f);
             f << std::endl;
 
-            f << std::fixed << std::setprecision(2) 
-            << std::right << std::setw(12) << std::setfill(' ') << "Abst" << SEMIKOL 
-            << std::right << std::setw(12) << std::setfill(' ') << "BrSec" << SEMIKOL 
-            << std::right << std::setw(12) << std::setfill(' ') << "LaSec" << SEMIKOL;
+            f << std::fixed << std::setprecision(2)
+            << std::right << std::setw(12) << std::setfill(' ') << "Abst" << SEMIKOL
+            << std::right << std::setw(12) << std::setfill(' ') << "BrSec" << SEMIKOL
+            << std::right << std::setw(12) << std::setfill(' ') << "LaSec" << SEMIKOL << std::endl;
 
             for(int i = 0; i < Liste->getAnz(); i++){
-                Liste->PrintIndex(i);
+                Liste->PrintIndex(i, f);
             }
 
             f.close();
-            
+
+            std::cout << "Daten wurden in Datei geschrieben!" << std::endl;
+
             textSeperator();
             break;
 

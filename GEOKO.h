@@ -15,7 +15,7 @@ class GEOKO {
 
     public:
         GEOKO() : BrGr(0), BrMin(0), BrSec(0), LaGr(0), LaMin(0), LaSec(0){};
-        GEOKO(int nBrGr, int nLaGr, int nBrMin, int nLaMin, double nBrSec, double nLaSec) : 
+        GEOKO(int nBrGr, int nLaGr, int nBrMin, int nLaMin, double nBrSec, double nLaSec) :
             BrGr(nBrGr), LaGr(nLaGr), BrMin(nBrMin), LaMin(nLaMin), BrSec(nBrSec), LaSec(nLaSec){};
         ~GEOKO();
 
@@ -26,7 +26,7 @@ class GEOKO {
         bool operator==(GEOKO& geoRigth);
         bool operator!=(GEOKO& geoRigth);
 
-        friend std::ostream& operator<<(std::ostream&, GEOKO&);
+        friend std::ostream& operator<<(std::ostream& out, GEOKO& geo);
 
         void setAbstand(GEOKO *);
         double getDistance(GEOKO *);
