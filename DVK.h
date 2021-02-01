@@ -25,4 +25,5 @@ class DVK : private DVKE{
         void CalcAllDistances();
         void CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt);
         void PrintMiddle();
+        void PrintIndex(int);
 };

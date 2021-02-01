@@ -125,3 +125,7 @@ void DVK::CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt) {
 void DVK::PrintMiddle(){
     std::cout << (GEOKO *)this->getData() << std::endl;
 }
+
+void DVK::PrintIndex(int i){
+    std::cout << (GEOKO *)Index[i]->getData() << std::endl;
+}

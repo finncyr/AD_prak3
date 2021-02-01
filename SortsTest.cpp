@@ -4,6 +4,8 @@
 #include <fstream>
 #include <chrono>
 
+#define SEMIKOL ";"
+
 void textSeperator(){
     std::cout << std::endl;
     std::cout << std::endl;
@@ -129,6 +131,23 @@ int main(){
             break;
 
         case 4:
+            strcat(importchar, "_S");
+            f.open(importchar, std::ios::out);
+
+            f << "Anz Daten: " << Liste->getAnz() << "; Mittelpunkt: ";
+            Liste->PrintMiddle();
+            f << std::endl;
+
+            f << std::fixed << std::setprecision(2) 
+            << std::right << std::setw(12) << std::setfill(' ') << "Abst" << SEMIKOL 
+            << std::right << std::setw(12) << std::setfill(' ') << "BrSec" << SEMIKOL 
+            << std::right << std::setw(12) << std::setfill(' ') << "LaSec" << SEMIKOL;
+
+            for(int i = 0; i < Liste->getAnz(); i++){
+                Liste->PrintIndex(i);
+            }
+
+            f.close();
             
             textSeperator();
             break;
