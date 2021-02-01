@@ -6,6 +6,7 @@ class GEOKO {
         int LaMin;
         double BrSec;
         double LaSec;
+        double abstand;
 
     public:
         GEOKO() : BrGr(0), BrMin(0), BrSec(0), LaGr(0), LaMin(0), LaSec(0){};
@@ -15,6 +16,10 @@ class GEOKO {
 
         bool operator >(GEOKO &);
         bool operator ==(GEOKO &);
+
+        void setAbstand(GEOKO *);
+        double getDistance(GEOKO *);
+        double getAbstand();
 
         int getBrGr();
         int getLaGr();

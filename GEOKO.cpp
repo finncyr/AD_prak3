@@ -1,4 +1,5 @@
 #include "GEOKO.h"
+#include <math.h>
 
 // Vergleich nach Breitengrad -> Längengrad
 bool GEOKO::operator >(GEOKO &nObj){
@@ -23,6 +24,20 @@ bool GEOKO::operator ==(GEOKO &nObj){
         return true;
     }
     else return false;
+}
+
+void GEOKO::setAbstand(GEOKO *ngeo){
+    abstand = getDistance(ngeo);
+}
+
+double GEOKO::getDistance(GEOKO *m){
+    double x = abs(this->getBrSec() - m->getBrSec());
+    double y = abs(this->getLaSec() - m->getLaSec());
+    return sqrt(x * x + y * y);
+}
+
+double GEOKO::getAbstand(){
+    return this->abstand;
 }
 
 int GEOKO::getBrGr(){
@@ -74,3 +89,5 @@ void GEOKO::setBrSec(double nBrSec){
 void GEOKO::setLaSec(double nLaSec){
     this->LaSec = nLaSec;
 }
+
+
