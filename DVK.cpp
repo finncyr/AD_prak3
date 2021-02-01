@@ -9,6 +9,10 @@ DVK::~DVK(){
     delete Index;
 }
 
+int DVK::getAnz(){
+    return this->Anz;
+}
+
 
 
 bool DVK::anhaenge(GEOKO *neu){
@@ -80,6 +84,7 @@ void DVK::vertausche(long First, long Second){
 
 // ----------------- INSERTION SORT -----------------
 
+//TODO Test if works ansosnten index auf Array überprüfen
 void DVK::insertionSort(){
     int j = 0;
     for(int i = 1; i < Anz; i++){
@@ -89,4 +94,30 @@ void DVK::insertionSort(){
             j -= 1;
         }
     }
+}
+
+
+// Zusätzliche Methoden
+
+void DVK::CalcAllDistances() {
+    for (int i = 0; i < getAnz(); i++) {
+        ((GEOKO *)Index[i]->getData())->setAbstand((GEOKO *)this->getData());
+    }
+}
+
+void DVK::CalcMiddle(double brSecDurchschnitt, double laSecDurchschnitt) {
+    brSecDurchschnitt = brSecDurchschnitt / this->getAnz();
+    laSecDurchschnitt = laSecDurchschnitt / this->getAnz();
+    int brMinDurchschnitt = (int) (brSecDurchschnitt / 60);
+    int laMinDurchschnitt = (int) (laSecDurchschnitt / 60);
+    int brGrDurchschnitt = (int) (brSecDurchschnitt / 3600);
+    int laGrDurchschnitt = (int) (laSecDurchschnitt / 3600);
+
+    this->setData(
+        new GEOKO(
+            brGrDurchschnitt,  laGrDurchschnitt,
+            brMinDurchschnitt, laMinDurchschnitt,
+            brSecDurchschnitt, laSecDurchschnitt
+        )
+    );
 }

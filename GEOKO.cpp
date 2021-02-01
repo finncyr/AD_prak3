@@ -92,3 +92,4 @@ bool GEOKO::operator==(GEOKO& nObj){
 bool GEOKO::operator!=(GEOKO& nObj){
     return fabs(this->getAbstand() - nObj.getAbstand()) > EPSILON;
 }
+
