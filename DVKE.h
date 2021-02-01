@@ -6,6 +6,9 @@ class DVKE {
 
     public:
         DVKE() : V(nullptr), N(nullptr), Data(nullptr){};
+        DVKE(DVKE *nV, DVKE *nN, void *nData) : 
+            V(nV), N(nN), Data(nData){};
+        ~DVKE();
 
         DVKE *getV();
         DVKE *getN();
