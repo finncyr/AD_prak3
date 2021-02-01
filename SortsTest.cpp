@@ -38,20 +38,18 @@ int main(){
 
     while(menuchoice != 5){
         std::cout << "##########################################" << std::endl;
-        std::cout << "#           Verkettete Listen            #" << std::endl;
+        std::cout << "#           Praktikum 3 in AD            #" << std::endl;
         std::cout << "##########################################" << std::endl;
         std::cout << std::endl;
         std::cout << std::endl;
         std::cout << "Bitte Menuepunkt waehlen:" << std::endl;
         std::cout << std::endl;
-        std::cout << "1.) Listenobjekt erstellen" << std::endl;
-        std::cout << "2.) Liste anzeigen" << std::endl;
-        std::cout << "3.) Element anhaengen" << std::endl;
-        std::cout << "4.) Element sortiert einfuegen" << std::endl;
-        std::cout << "5.) Element loeschen" << std::endl;
-        std::cout << "6.) Liste sortieren" << std::endl;
+        std::cout << "1.) Verkettete Liste anlegen" << std::endl;
+        std::cout << "2.) Liste sortieren mit Heap Sort" << std::endl;
+        std::cout << "3.) Liste sortieren mit Insertion Sort" << std::endl;
+        std::cout << "4.) Daten der Liste schreiben" << std::endl;
         std::cout << std::endl;
-        std::cout << "12.) Ende" << std::endl;
+        std::cout << "5.) Ende" << std::endl;
         std::cout << std::endl;
         std::cout << std::endl;
 
@@ -104,6 +102,9 @@ int main(){
 
             Liste->CalcMiddle(brSecDurchschnitt, laSecDurchschnitt);
             Liste->CalcAllDistances();
+
+            std::cout << "Mittelpunkt: " << std::endl;
+            Liste->PrintMiddle();
 
             textSeperator();
             break;
