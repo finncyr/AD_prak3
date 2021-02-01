@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <chrono>
 
 void textSeperator(){
     std::cout << std::endl;
@@ -110,12 +111,20 @@ int main(){
             break;
 
         case 2:
-            
+            auto start = std::chrono::steady_clock::now();
+            Liste->heapSort();
+            auto stop = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_seconds = stop-start;
+            std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
             textSeperator();
             break;
 
         case 3:
-            
+            auto start = std::chrono::steady_clock::now();
+            Liste->insertionSort();
+            auto stop = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsed_seconds = stop-start;
+            std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
             textSeperator();
             break;
 
