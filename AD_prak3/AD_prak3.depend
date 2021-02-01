@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1612187660 source:c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\dvke.cpp
+	"DVKE.h"
+
+1612187665 c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\dvke.h
+
+1612188590 source:c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\geoko.cpp
+	"GEOKO.h"
+
+1612188473 c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\geoko.h
+	<iostream>
+	<math.h>
+	<ostream>
+	<iomanip>
+
+1612191111 source:c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\dvk.cpp
+	"DVK.h"
+
+1612188779 c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\dvk.h
+	"DVKE.h"
+	"GEOKO.h"
+	<iostream>
+
+1612191931 source:c:\users\lgers\onedrive\desktop\ad_prak3\ad_prak3\sortstest.cpp
+	"DVK.h"
+	<iostream>
+	<string.h>
+	<fstream>
+	<chrono>
+
